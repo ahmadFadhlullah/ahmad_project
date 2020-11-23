@@ -19,7 +19,12 @@
                 height: 100vh;
                 margin: 0;
             }
-
+            label {
+                font-weight:bold;
+            }
+            input, select {
+                width:100%;
+            }
             .full-height {
                 height: 100vh;
             }
@@ -28,8 +33,19 @@
                 align-items: center;
                 display: flex;
                 justify-content: center;
+                flex-wrap:wrap;
             }
 
+            .flex-column {
+                display:flex;
+                flex-direction: column;
+                width:300px;
+            }
+
+            .form-group {
+                display:flex;
+                flex-wrap:wrap;
+            }
             .position-ref {
                 position: relative;
             }
@@ -44,6 +60,10 @@
                 text-align: center;
             }
 
+            .title {
+                font-size: 84px;
+                width:100%;
+            }
             .title {
                 font-size: 84px;
             }
@@ -81,7 +101,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    My Laravel
                 </div>
 
                 <div class="links">
