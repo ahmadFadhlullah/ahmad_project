@@ -85,44 +85,18 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
-
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
             <div class="content flex-center">
-                <p class="title">Contoh Formulir</p>
-                <form action="{{ url('/result') }}" class="flex-column" method="post">
-                    @csrf
-                    <div class="form-group m-b-md">
-                        <label for="name">Nama</label>
-                        <input type="text" name="name" id="name">
-                    </div>
-                    <div class="form-group m-b-md">
-                        <label for="gender">Jenis Kelamin</label>
-                        <select name="gender" id="gender">
-                            <option value="Pria">Pria</option>
-                            <option value="Wanita">Wanita</option>
-                        </select>
-                    </div>
-                    <div class="form-group m-b-md">
-                        <label for="age">Usia</label>
-                        <input type="number" name="age" id="age">
-                    </div>
-                    <div>
-                        <button type="submit">Kirim</button>
-                    </div>
-                </form>
+                <p class="title">Hasil Formulir</p>
+                <div class="flex-column">
+                    <strong>Nama</strong>
+                    <p>{{ $name }}</p>
+                    <strong>Jenis Kelamin</strong>
+                    <p> {{ $gender }} </p>
+                    <strong>Usia</strong>
+                    <p> {{ $age }} </p>
+                </div>
             </div>
         </div>
     </body>
 </html>
+
