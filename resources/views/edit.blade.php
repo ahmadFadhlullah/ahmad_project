@@ -85,18 +85,45 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            <div class="content flex-center">
-                <p class="title">Hasil Formulir</p>
-                <div class="flex-column">
-                    <strong>Nama</strong>
-                    <p>{{ $person->name }}</p>
-                    <strong>Jenis Kelamin</strong>
-                    <p> {{ $person->gender }} </p>
-                    <strong>Usia</strong>
-                    <p> {{ $person->age }} </p>
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
                 </div>
+            @endif
+
+            <div class="content flex-center">
+                <p class="title">Ubah Formulir</p>
+                <form action="{{ url('/edit/'.$person->id) }}" class="flex-column" method="post">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group m-b-md">
+                        <label for="name">Nama</label>
+                        <input type="text" name="name" id="name" value=" {{ $person->name }} ">
+                    </div>
+                    <div class="form-group m-b-md">
+                        <label for="gender">Jenis Kelamin</label>
+                        <select name="gender" id="gender">
+                            <option value="Pria" {{ $person->gender == "Pria" ? "selected":"" }}>Pria</option>
+                            <option value="Wanita" {{ $person->gender == "Wanita" ? "selected":"" }}>Wanita</option>
+                        </select>
+                    </div>
+                    <div class="form-group m-b-md">
+                        <label for="age">Usia</label>
+                        <input type="number" name="age" id="age" placeholder=" {{ $person->age }} " >
+                    </div>
+                    <div>
+                        <button type="submit">Kirim</button>
+                    </div>
+                </form>
             </div>
         </div>
     </body>
 </html>
-

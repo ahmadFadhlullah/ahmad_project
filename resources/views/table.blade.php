@@ -85,18 +85,46 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
-            <div class="content flex-center">
-                <p class="title">Hasil Formulir</p>
-                <div class="flex-column">
-                    <strong>Nama</strong>
-                    <p>{{ $person->name }}</p>
-                    <strong>Jenis Kelamin</strong>
-                    <p> {{ $person->gender }} </p>
-                    <strong>Usia</strong>
-                    <p> {{ $person->age }} </p>
+            @if (Route::has('login'))
+                <div class="top-right links">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+
+                        @if (Route::has('register'))
+                            <a href="{{ route('register') }}">Register</a>
+                        @endif
+                    @endauth
                 </div>
+            @endif
+
+            <div class="content flex-center">
+                    <p class="title">Contoh Table</p>
+                    <div style="width:100%">
+                        <a href=" {{url('/create')}} "> <button>Tambah Data</button> </a>
+                    </div>
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th>Nama</th>
+                                <th>Jenis Kelamin</th>
+                                <th>Usia</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($all as $item)
+                                <tr>
+                                    <td> {{ $item->name }} </td>
+                                    <td> {{ $item->gender }} </td>
+                                    <td> {{ $item->age }} </td>
+                                    <td> <a href=" {{ url('/result/'. $item->id) }} ">Details</a>
+                                     <a href=" {{ url('/edit/'. $item->id) }} ">Edit</a> </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
             </div>
         </div>
     </body>
 </html>
-
