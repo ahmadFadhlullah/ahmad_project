@@ -9,8 +9,23 @@
 </head>
 <body>
 
-    <div class="jumbotron">
-        <h1>Hello World</h1>
+    <div class="container p-3">
+        <div class="card">
+            <div class="card-body">
+                <form action="/add" method="post">
+                    @csrf
+                    <div class="form-group">
+                         <label for="nama">Nama</label>
+                         <input type="text" name="nama" class="form-control" id="nama">
+                    </div>
+                    <div class="form-group">
+                        <label for="umur">Umur</label>
+                        <input type="number" name="umur" class="form-control" id="umur">
+                   </div>
+                   <button class="btn btn-primary">Simpan</button>
+                </form>
+            </div>
+        </div>
     </div>
 
 </body>

@@ -23,3 +23,4 @@ Route::post('/result','FormController@index');
 
 Route::get('/database', 'Ahmad@show');
 Route::get('/form','Ahmad@form');
+Route::post('/add', 'Ahmad@add');
