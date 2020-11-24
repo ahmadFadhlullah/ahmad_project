@@ -19,8 +19,7 @@ Route::get('/home', function(){
     return "hello";
 })->name('home');
 
-Route::post('/result','FormController@index');
-
 Route::get('/database', 'Ahmad@show');
 Route::get('/form','Ahmad@form');
 Route::post('/add', 'Ahmad@add');
+Route::post('/result','FormController@store');
