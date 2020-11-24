@@ -46,4 +46,11 @@ class FormController extends Controller
         $person->save();
         return redirect('/');
     }
+
+    public function destroy($id){
+        $person = Person::find($id);
+        $person->delete();
+
+        return redirect('/');
+    }
 }

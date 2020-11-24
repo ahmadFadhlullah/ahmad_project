@@ -119,7 +119,13 @@
                                     <td> {{ $item->gender }} </td>
                                     <td> {{ $item->age }} </td>
                                     <td> <a href=" {{ url('/result/'. $item->id) }} ">Details</a>
-                                     <a href=" {{ url('/edit/'. $item->id) }} ">Edit</a> </td>
+                                     <a href=" {{ url('/edit/'. $item->id) }} " >Edit</a>
+                                     <form action="{{ url('/delete/'.$item->id) }}" method="post">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="confirm('Are you sure delete it?')">Hapus</button>
+                                    </form>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

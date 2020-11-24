@@ -30,3 +30,4 @@ Route::get('/result/{id}','FormController@show');
 Route::get('/create','FormController@create');
 Route::get('/edit/{id}','FormController@edit');
 Route::put('/edit/{id}','FormController@update');
+Route::delete('/delete/{id}','FormController@destroy');

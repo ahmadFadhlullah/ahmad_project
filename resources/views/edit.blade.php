@@ -117,7 +117,7 @@
                     </div>
                     <div class="form-group m-b-md">
                         <label for="age">Usia</label>
-                        <input type="number" name="age" id="age" placeholder=" {{ $person->age }} " >
+                        <input type="number" name="age" id="age" value=" {{ intval($person->age)}} " placeholder=" {{ $person->age }} " >
                     </div>
                     <div>
                         <button type="submit">Kirim</button>
